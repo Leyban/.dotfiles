@@ -1,0 +1,7 @@
+# Ignore Everything
+*
+
+# Except for these
+!.gitignore
+!.tmux.conf
+!.bashrc
