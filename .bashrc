@@ -139,6 +139,9 @@ export EDITOR="$VISUAL"
 # GO ENV
 export PATH=$PATH:/usr/local/go/bin
 
+# direnv
+eval "$(direnv hook bash)"
+
 # JAVA ENV
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
