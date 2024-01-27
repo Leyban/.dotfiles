@@ -121,6 +121,13 @@ else
 fi
 unset color_prompt force_color_prompt
 
+
+# Ignore Case
+bind 'set completion-ignore-case on'
+
+# direnv
+eval "$(direnv hook bash)"
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -132,38 +139,22 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# EDITOR
+# Cargo PATH
+export PATH=$PATH:/home/user/.cargo/bin
+
+# NVIM PATH
+export PATH=$PATH:/usr/local/nvim/bin
+
+# NEOVIM EDITOR
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # GO ENV
 export PATH=$PATH:/usr/local/go/bin
 
-# direnv
-eval "$(direnv hook bash)"
-
 # JAVA ENV
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
-
-# HADOOP ENV
-export HADOOP_HOME=/usr/local/hadoop/
-export HADOOP_MAPRED_HOME=$HADOOP_HOME
-export HADOOP_COMMON_HOME=$HADOOP_HOME
-export HADOOP_HDFS_HOME=$HADOOP_HOME
-export YARN_HOME=$HADOOP_HOME
-PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-
-# HIVE ENV
-export HIVE_HOME=/usr/local/hive/
-export PATH=$PATH:$HIVE_HOME/bin
-export CLASSPATH=$CLASSPATH:/usr/local/hadoop/lib/*:.
-export CLASSPATH=$CLASSPATH:/usr/local/hive/lib/*:.
-
-# DERBY ENV
-export DERBY_HOME=/usr/local/derby/
-export PATH=$PATH:$DERBY_HOME/bin
-export CLASSPATH=$CLASSPATH:$DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
 
 export PDSH_RCMD_TYPE=ssh
 
