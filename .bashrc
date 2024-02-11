@@ -170,3 +170,9 @@ export NVM_DIR="$HOME/.nvm"
 # echo "   \ \______\ \_____\  \ \_\  \ \______\ \_\ \_\ \_\ `.__\"
 # echo "    \/______/\/_____/   \/_/   \/______/\/_/\/_/\/_/`./__/"
 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
