@@ -118,14 +118,14 @@ parse_git_branch() {
 
 if [ "$color_prompt" = yes ]; then
     # User
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;30m\033[47m  \u@\h'
-    PS1+='\[\033[0;37m\033[44m█◤'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;90m\033[107m  \u@\h'
+    PS1+='\[\033[1;97m\033[44m█◤'
     # Directory
     PS1+=' 🖿  \w'
     PS1+='\[\033[0;34m\033[103m█◤'
 
     # Branch
-    PS1+='\[\033[0;30m\033[103m⎇  $(parse_git_branch)\033[0;93m'
+    PS1+='\[\033[1;90m\033[103m⎇  $(parse_git_branch)\033[0;93m'
     PS1+='█◤\[\033[00m\]'
 
     # Input
@@ -173,18 +173,20 @@ export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
 # I don't know what this is for
 export PDSH_RCMD_TYPE=ssh
 
-YELLOW='\033[1;33m'
-BLUE='\033[1;94m'
-echo -e ${YELLOW}' __       ______  __   __'${BLUE}'  ______     ___   ___  ___'
-echo -e ${YELLOW}'/\\ \\     /\\  ___\\/\\ \\__\\ \\'${BLUE}'/\\  __ \\   /  _`./\\  `.\\  \\'
-echo -e ${YELLOW}'\\ \\ \\    \\ \\ \\___\\ \\__  __\\'${BLUE}' \\ \\_\\ \\_/\\  \\\\ \\ \\   `\\  \\'
-echo -e ${YELLOW}' \\ \\ \\    \\ \\  ___\\/_/\\ \\/'${BLUE}' \\ \\  ___ \\ \\  __ \\ \\       \\'
-echo -e ${YELLOW}'  \\ \\ \\____\\ \\ \\____ \\ \\ \\'${BLUE}'  \\ \\ \\__\\ \\ \\ \\/\\ \\ \\ `.    \\'
-echo -e ${YELLOW}'   \\ \\______\\ \\_____\\ \\ \\_\\'${BLUE}'  \\ \\______\\ \\_\\ \\_\\ \\_\\ `.__\\'
-echo -e ${YELLOW}'    \\/______/\\/_____/  \\/_/'${BLUE}'   \\/______/\\/_/\\/_/\\/_/`./__/'
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+YELLOW='\033[1;33m'
+BLUE='\033[1;94m'
+echo -e ${YELLOW}' __       ______  __   __'            ${BLUE}'  ______     ___   ___  ___'
+echo -e ${YELLOW}'/\\ \\     /\\  ___\\/\\ \\__\\ \\'   ${BLUE}'/\\  __ \\   /  _`./\\  `.\\  \\'
+echo -e ${YELLOW}'\\ \\ \\    \\ \\ \\___\\ \\__  __\\' ${BLUE}' \\ \\_\\ \\_/\\  \\\\ \\ \\   `\\  \\'
+echo -e ${YELLOW}' \\ \\ \\    \\ \\  ___\\/_/\\ \\/'   ${BLUE}' \\ \\  ___ \\ \\  __ \\ \\       \\'
+echo -e ${YELLOW}'  \\ \\ \\____\\ \\ \\____ \\ \\ \\'  ${BLUE}'  \\ \\ \\__\\ \\ \\ \\/\\ \\ \\ `.    \\'
+echo -e ${YELLOW}'   \\ \\______\\ \\_____\\ \\ \\_\\'  ${BLUE}'  \\ \\______\\ \\_\\ \\_\\ \\_\\ `.__\\'
+echo -e ${YELLOW}'    \\/______/\\/_____/  \\/_/'       ${BLUE}'   \\/______/\\/_/\\/_/\\/_/`./__/'
+unset YELLOW BLUE
+
