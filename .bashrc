@@ -111,11 +111,25 @@ fi
 # Show git branch name
 force_color_prompt=yes
 color_prompt=yes
+
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\'\n'⮩ 🐷 '
+    # User
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;30m\033[47m  \u@\h'
+    PS1+='\[\033[0;37m\033[44m█◤'
+    # Directory
+    PS1+=' 🖿  \w'
+    PS1+='\[\033[0;34m\033[103m█◤'
+
+    # Branch
+    PS1+='\[\033[0;30m\033[103m⎇  $(parse_git_branch)\033[0;93m'
+    PS1+='█◤\[\033[00m\]'
+
+    # Input
+    PS1+='\'\n'⮩ 🐷 '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\'\n'⮩ 🐷 '
 fi
@@ -159,8 +173,8 @@ export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
 # I don't know what this is for
 export PDSH_RCMD_TYPE=ssh
 
-YELLOW='\033[0;33m'
-BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;94m'
 echo -e ${YELLOW}' __       ______  __   __'${BLUE}'  ______     ___   ___  ___'
 echo -e ${YELLOW}'/\\ \\     /\\  ___\\/\\ \\__\\ \\'${BLUE}'/\\  __ \\   /  _`./\\  `.\\  \\'
 echo -e ${YELLOW}'\\ \\ \\    \\ \\ \\___\\ \\__  __\\'${BLUE}' \\ \\_\\ \\_/\\  \\\\ \\ \\   `\\  \\'
