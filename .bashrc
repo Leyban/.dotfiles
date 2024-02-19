@@ -40,29 +40,6 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-# if [ -n "$force_color_prompt" ]; then
-#     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-#         # We have color support; assume it's compliant with Ecma-48
-#         # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-#         # a case would tend to support setf rather than setaf.)
-#         color_prompt=yes
-#     else
-#         color_prompt=
-#     fi
-# fi
-
-# if [ "$color_prompt" = yes ]; then
-#     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-# else
-#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-# fi
-# unset color_prompt force_color_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|rxvt*)
@@ -118,19 +95,19 @@ parse_git_branch() {
 
 if [ "$color_prompt" = yes ]; then
     # User
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;90m\033[107m  \u@\h'
-    PS1+='\[\033[1;97m\033[44m█◤'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;90m\033[107m 🐷 \u@\h'
+    PS1+='\[\033[1;97m\033[44m█'
 
     # Directory
     PS1+=' 🖿  \w'
-    PS1+='\[\033[0;34m█◤'
+    PS1+='\[\033[0;34m█'
 
     # Branch
     PS1+='\[\033[1;94m⎇  $(parse_git_branch)\033[0;93m'
     PS1+='\[\033[00m\]'
 
     # Input
-    PS1+='\'\n'⮩ 🐷 '
+    PS1+='\'\n'⮩ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\'\n'⮩ 🐷 '
 fi
@@ -191,5 +168,6 @@ echo -e ${C1}' \\ \\ \\    \\ \\  ___\\/_/\\ \\/'   ${C2}'  \\ \\  ___ \\ \\  __
 echo -e ${C1}'  \\ \\ \\____\\ \\ \\____ \\ \\ \\'  ${C2}'   \\ \\ \\__\\ \\ \\ \\/\\ \\ \\ `.    \\'
 echo -e ${C1}'   \\ \\______\\ \\_____\\ \\ \\_\\'  ${C2}'   \\ \\______\\ \\_\\ \\_\\ \\_\\ `.__\\'
 echo -e ${C1}'    \\/______/\\/_____/  \\/_/'       ${C2}'    \\/______/\\/_/\\/_/\\/_/`./__/'
+echo ""
 unset C1 C2 random_number1 random_number2
 
