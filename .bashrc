@@ -90,7 +90,11 @@ force_color_prompt=yes
 color_prompt=yes
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    IN_GIT=$(git rev-parse --is-inside-work-tree 2>/dev/null)
+    if [ -n "$IN_GIT" ]; then
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/⎇  \1/'
+        unset IN_GIT
+    fi
 }
 
 if [ "$color_prompt" = yes ]; then
@@ -103,13 +107,13 @@ if [ "$color_prompt" = yes ]; then
     PS1+='\[\033[0;34m█'
 
     # Branch
-    PS1+='\[\033[1;94m⎇  $(parse_git_branch)\033[0;93m'
+    PS1+='\[\033[1;94m$(parse_git_branch)\033[0;93m'
     PS1+='\[\033[00m\]'
 
     # Input
     PS1+='\'\n'⮩ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\'\n'⮩ 🐷 '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\'\n'⮩ '
 fi
 unset color_prompt force_color_prompt
 
