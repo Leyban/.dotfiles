@@ -102,15 +102,15 @@ parse_git_branch() {
 
 if [ "$color_prompt" = yes ]; then
     # User
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;37m\033[40m 🐷 \u@\h'
-    PS1+='\[\033[0;30m\033[104m█'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;37m\]\[\033[40m\] 🐷 \u@\h'
+    PS1+='\[\033[0;30m\]\[\033[104m\]█'
 
     # Directory
-    PS1+='\[\033[0;30m\033[104m 🖿  \w'
-    PS1+='\[\033[0m\033[1;34m█'
+    PS1+='\[\033[0;30m\]\[\033[104m\] 🖿  \w'
+    PS1+='\[\033[0m\]\[\033[1;34m\]█'
 
     # Branch
-    PS1+='\[\033[1;94m$(parse_git_branch)\033[0;93m'
+    PS1+='\[\033[1;94m\]$(parse_git_branch)\[\033[0;93m\]'
     PS1+='\[\033[00m\]'
 
     # Input
