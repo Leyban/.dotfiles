@@ -170,7 +170,7 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # zoxide
-eval "$(zoxide init bash --cmd cd)"
+# eval "$(zoxide init bash --cmd cd)"
 
 random_number1=$((1 + RANDOM % 6))
 random_number2=$((1 + RANDOM % 6))
