@@ -71,8 +71,8 @@ alias l='ls -CF'
 
 alias vim='nvim'
 
-# fd
-alias find=fdfind
+# fuzzy cd
+alias cf='cd $(find * -type d | fzf)'
 
 alias ipdocker='docker inspect -f "{{.Name}}:{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" $(docker ps -q) | sed "s/\///" | sed "s/:/\t/"'
 
@@ -120,6 +120,8 @@ else
 fi
 unset color_prompt force_color_prompt
 
+LS_COLORS=$LS_COLORS:'ow=0;30;102:';
+export LS_COLORS
 
 # Ignore Case
 bind 'set completion-ignore-case on'
