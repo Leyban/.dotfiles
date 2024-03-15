@@ -140,6 +140,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# pspg -- https://github.com/okbob/pspg
+export PSQL_PAGER='pspg -X -b'
+
 # Cargo PATH
 export PATH=$PATH:/home/user/.cargo/bin
 
