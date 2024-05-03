@@ -186,19 +186,3 @@ echo -e ${C1}'    \\/______/\\/_____/  \\/_/'       ${C2}'    \\/______/\\/_/\\/
 echo ""
 unset C1 C2 random_number1 random_number2
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/mnt/d/Programs/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/mnt/d/Programs/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/mnt/d/Programs/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/mnt/d/Programs/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
