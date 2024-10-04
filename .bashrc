@@ -123,6 +123,9 @@ unset color_prompt force_color_prompt
 LS_COLORS=$LS_COLORS:'ow=0;30;102:';
 export LS_COLORS
 
+# Local bins
+export PATH=$PATH:~/.local/bin
+
 # Ignore Case
 bind 'set completion-ignore-case on'
 
@@ -163,14 +166,19 @@ export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
 # I don't know what this is for
 export PDSH_RCMD_TYPE=ssh
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
+# deno
+export PATH="$HOME/.deno/bin:$PATH"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # zoxide
-eval "$(zoxide init bash --cmd cd)"
+# eval "$(zoxide init bash --cmd cd)"
+
+if [[ -t 0 && $- = *i* ]]
+then
+	stty -ixon
+	bind -r "\C-s"
+fi 
 
 random_number1=$((1 + RANDOM % 6))
 random_number2=$((1 + RANDOM % 6))
