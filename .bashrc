@@ -158,6 +158,7 @@ export EDITOR="$VISUAL"
 
 # GO ENV
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 
 # JAVA ENV
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
